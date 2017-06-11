@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=0.5.0">
+    <title>D3.js</title>
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/monokai-sublime.css">
+    <link type="text/css" rel="stylesheet" href="/css/d3.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <h1><span class="glyphicon glyphicon-stats"></span>D3.js <small>Data-Driven Documents</small></h1>
+    </div>
+</div>
+
+<div class="container-fluid cnt">
+    <div class="cnt-wrap">
+        <div class="index">
+            <ol>
+                <li>D3.js 简介</li>
+                <li>SVG 基础</li>
+                <li>选择集与数据</li>
+            </ol>
+        </div>
+        <div class="sheet">
+            <div class="sheet-bg"></div>
+            <div class="item">
+                <h2 class="page-header"><span>1. D3.js 简介</span></h2>
+                <div class="item-cnt">
+                    <div class="intro-pic">
+                        <img src="/images/d3/D3.png">
+                    </div>
+                    <p class="item-cnt-h2">使用 D3.js 的优点</p>
+                    <ul class="item-cnt-ul">
+                        <li>D3 能够将数据和DOM绑定在一起</li>
+                        <li>不同于其他可视化工具，使用 D3 绘制各种类型的图表拥有更多的自由度</li>
+                        <li>类似于 jQuery 的连缀语法使得代码更加简洁</li>
+                        <li>大量的布局，能够适应各种图表制作需求</li>
+                        <li>基于SVG，具有很好的交互性和动态性</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <h2 class="page-header"><span>2. 图表类型</span></h2>
+                <ul>
+                    <li>
+                        <p class="item-cnt-h2">Bar Chart 柱形图/条形图</p>
+                        <img src="/images/d3/bar-chart.jpg">
+                        <p>Bar chart 主要用于可视化时间序列中离散的数据点；</p>
+                        <p>当分类项目的标签文本比较长的时候，柱形图的标签不便于排版，这时使用条形图更加合适。</p>
+                    </li>
+                    <li>
+                        <p class="item-cnt-h2">Line Chart 折线图/曲线图</p>
+                        <p>Line chart 主要用于可视化连续型的时间数列数据，强调数据在一个时间序列上的变化趋势；</p>
+                        <p>柱形图更适于数据点较少的情况；曲线图更适于数据点较多的场景。</p>
+                    </li>
+                    <li>
+                        <p class="item-cnt-h2">Pie Chart 饼图</p>
+                        <p>Pie Chart 主要用于可视化比例分布数据，展现整体中各个部分所占的比例关系。</p>
+                        <p>饼图的缺点：扇区之间不便于比较大小，特别是比较接近的时候。</p>
+                        <p>饼图的优点：会给我们一种整体和构成的印象，看到饼图我们就会想起100%，这是条形图所没有的。</p>
+                        <p class="item-cnt-tips"><span class="glyphicon glyphicon-tag"></span>使用饼图的技巧：</p>
+                        <dl class="dl-horizontal">
+                            <dt>尽量不使用3D效果、透视效果：</dt><dd>这些效果会增加我们分辨扇区大小的难度</dd>
+                            <dt>扇区要少，最好是2~3片：</dt><dd>这样就弱化了扇区间的大小比较。数据点较多时，不建议使用饼图。</dd>
+                            <dt>用颜色组合扇区：</dt><dd>饼图的扇区较多时，可以利用颜色再组合为几个大分类</dd>
+                            <dt>标签要整齐：</dt><dd>饼图的标签极易显得凌乱，我们需要使用一些小技巧来对齐标签，是图表做得更专业。</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <p class="item-cnt-h2">Circos 弦图</p>
+                        <a href="/images/d3/circos.png" target="_blank">
+                            <img src="/images/d3/circos.png">
+                            <i>图片来自 http://circos.ca</i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="item-link"><a href="http://circos.ca/guide/tables/" target="_blank">Circos</a></div>
+            </div>
+            <div class="item web-basic">
+                <h2 class="page-header"><span>3. D3.js WEB 基础</span></h2>
+                <div class="item-cnt">
+                    <p class="item-cnt-h2">D3.js 的兼容性</p>
+                    <img src="/images/d3/SVG-basic-support.jpg">
+                    <p>由于 D3.js 使用的是 SVG ，而 IE8 及以下浏览器不支持 SVG ，因此 D3.js 一般不支持 IE8 及以下浏览器。</p>
+                    <p class="item-cnt-h2">SVG 基础</p>
+                    <p>与其他图像格式相比，使用 SVG 的优势在于：</p>
+                    <ul class="item-cnt-ul">
+                        <li>SVG 可被非常多的工具读取和修改（比如记事本）</li>
+                        <li>SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强</li>
+                        <li>SVG 可在图像质量不下降的情况下被放大</li>
+                    </ul>
+                    <p>使用 SVG 绘制基本图形：</p>
+                    <ul>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>rect 矩形</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <rect x="50" y="10" width="200" height="100" rx="20" ry="20" style="fill:#d3ffb5;stroke:#00b91d;stroke-width:5;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;100&quot; rx=&quot;20&quot; ry=&quot;20&quot; style=&quot;fill:#d3ffb5;stroke:#00b91d;stroke-width:5;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>circle 圆形</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <circle cx="150" cy="60" r="50" style="fill:#d3ffb5;stroke:#00b91d;stroke-width:5;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;circle cx=&quot;150&quot; cy=&quot;60&quot; r=&quot;50&quot; style=&quot;fill:#d3ffb5;stroke:#00b91d;stroke-width:5;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>ellipse 椭圆</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <ellipse cx="150" cy="60" rx="100" ry="50" style="fill:#d3ffb5;stroke:#00b91d;stroke-width:5;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;ellipse cx=&quot;150&quot; cy=&quot;60&quot; rx=&quot;100&quot; ry=&quot;50&quot; style=&quot;fill:#d3ffb5;stroke:#00b91d;stroke-width:5;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>line 线段</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <line x1="20" y1="100" x2="280" y2="20" style="stroke:#00b91d;stroke-width:5;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;line x1=&quot;20&quot; y1=&quot;100&quot; x2=&quot;280&quot; y2=&quot;20&quot; style=&quot;stroke:#00b91d;stroke-width:5;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>polygon 多边形</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <polygon points="100,40 200,40 110,100 150,10 190,100" style="fill:#d3ffb5;stroke:#00b91d;stroke-width:2;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;polygon points=&quot;100,40 200,40 110,100 150,10 190,100&quot; style=&quot;fill:#d3ffb5;stroke:#00b91d;stroke-width:2;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>polyline 折线</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <polyline points="20,100 50,20 80,80 100,30 150,50 200,90 250,60 280,5" style="fill:#d3ffb5;stroke:#00b91d;stroke-width:2;"/>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;polygon points=&quot;100,40 200,40 110,100 150,10 190,100&quot; style=&quot;fill:#d3ffb5;stroke:#00b91d;stroke-width:2;&quot; /&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>text 文本</p>
+                            <svg width="300" height="120" style="outline:1px solid #000;">
+                                <text x="100" y="90" dx="10" dy="-10" rotate="-15" textlength="160" style="fill:#00b91d;"><tspan font-weight="bold" fill="#f10017">D3.js </tspan>发现数据之美</text>
+                            </svg>
+                            <div class="code">
+                                <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;text x=&quot;100&quot; y=&quot;90&quot; dx=&quot;10&quot; dy=&quot;-10&quot; rotate=&quot;-15&quot; textLength=&quot;160&quot; style=&quot;fill:#00b91d;&quot;&gt;
+        &lt;tspan font-weight=&quot;bold&quot; fill=&quot;#f10017&quot;&gt;D3.js &lt;/tspan&gt;发现数据之美
+    &lt;/text&gt;
+&lt;/svg&gt;</pre>
+                            </div>
+                            <p>使用 <code>&lt;tspan&gt;</code> 标签对文本中的特定文字定义单独的样式。</p>
+                        </li>
+                    </ul>
+                    <p class="item-cnt-tips">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        在 SVG 中，常用的样式名称和我们一般的 HTML 标签的样式名称不一样，但基本上是一个对应关系：
+                    </p>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>SVG 样式</th>
+                            <th>常规 样式</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>fill：填充色，<code>&lt;text&gt;</code> 文本的字体颜色</td>
+                            <td>相当于 <code>background-color</code> 和 字体的 <code>color</code></td>
+                        </tr>
+                        <tr>
+                            <td>stroke：轮廓线颜色</td>
+                            <td>相当于 <code>border-color</code></td>
+                        </tr>
+                        <tr>
+                            <td>stroke-width：轮廓线宽度</td>
+                            <td>相当于 <code>border-width</code></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-cnt-h3"><span class="glyphicon glyphicon-grain"></span>SVG 滤镜和渐变</div>
+                    <p>滤镜 <code>&lt;filter&gt;</code> 和渐变  <code>&lt;linearGradient&gt;</code>（线性渐变）、<code>&lt;radialGradient&gt;</code>（径向渐变）都是写在 <code>&lt;defs&gt;</code> 标签中的， defs 用与定义可重复利用的图形元素。</p>
+                    <svg width="300" height="120" style="outline:1px solid #000;">
+                        <defs>
+                            <filter id="GaussianBlur">
+                                <fegaussianblur in="SourceGraphic" stddeviation="5">
+                            </fegaussianblur></filter>
+                        </defs>
+                        <rect x="50" y="20" width="200" height="80" fill="#00b91d" filter="url(#GaussianBlur)"/>
+                    </svg>
+                    <div class="code">
+                        <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;GaussianBlur&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;5&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;20&quot; width=&quot;200&quot; height=&quot;80&quot; fill=&quot;#00b91d&quot; filter=&quot;url(#GaussianBlur)&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;</pre>
+                    </div>
+                    <svg width="300" height="120" style="outline:1px solid #000;">
+                        <defs>
+                            <lineargradient id="multiColor" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f00"/>
+                                <stop offset="20%" stop-color="#ff8100"/>
+                                <stop offset="40%" stop-color="#efff00"/>
+                                <stop offset="50%" stop-color="#0f0"/>
+                                <stop offset="70%" stop-color="#07ffc6"/>
+                                <stop offset="100%" stop-color="#ff00f7"/>
+                            </lineargradient>
+                        </defs>
+                        <rect x="50" y="20" width="200" height="80" fill="url(#multiColor)"/>
+                    </svg>
+                    <div class="code">
+                        <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;defs&gt;
+        &lt;linearGradient id=&quot;multiColor&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;&gt;
+            &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f00&quot; /&gt;
+            &lt;stop offset=&quot;20%&quot; stop-color=&quot;#ff8100&quot; /&gt;
+            &lt;stop offset=&quot;40%&quot; stop-color=&quot;#efff00&quot; /&gt;
+            &lt;stop offset=&quot;50%&quot; stop-color=&quot;#0f0&quot; /&gt;
+            &lt;stop offset=&quot;70%&quot; stop-color=&quot;#07ffc6&quot; /&gt;
+            &lt;stop offset=&quot;100%&quot; stop-color=&quot;#ff00f7&quot; /&gt;
+        &lt;/linearGradient&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;20&quot; width=&quot;200&quot; height=&quot;80&quot; fill=&quot;url(#multiColor)&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;</pre>
+                    </div>
+                    <svg width="300" height="120" style="outline:1px solid #000;">
+                        <defs>
+                            <radialgradient id="radialGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                <stop offset="0%" style="stop-color:#f00;stop-opacity:.8"/>
+                                <stop offset="100%" style="stop-color:#ff0;stop-opacity:.8"/>
+                            </radialgradient>
+                        </defs>
+                        <ellipse cx="150" cy="60" rx="100" ry="50" fill="url(#radialGradient)"/>
+                    </svg>
+                    <div class="code">
+                        <pre class="html">&lt;svg width=&quot;300&quot; height=&quot;120&quot; style=&quot;outline:1px solid #000;&quot;&gt;
+    &lt;defs&gt;
+        &lt;radialGradient id=&quot;radialGradient&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;50%&quot; fx=&quot;50%&quot; fy=&quot;50%&quot;&gt;
+            &lt;stop offset=&quot;0%&quot; style=&quot;stop-color:#f00;stop-opacity:.8&quot;/&gt;
+            &lt;stop offset=&quot;100%&quot; style=&quot;stop-color:#ff0;stop-opacity:.8&quot;/&gt;
+        &lt;/radialGradient&gt;
+    &lt;/defs&gt;
+    &lt;ellipse cx=&quot;150&quot; cy=&quot;60&quot; rx=&quot;100&quot; ry=&quot;50&quot; fill=&quot;url(#radialGradient)&quot; /&gt;
+&lt;/svg&gt;</pre>
+                    </div>
+                </div>
+                <div class="item-link">
+                    <a href="http://caniuse.com/#search=svg" target="_blank">SVG (basic support) from Can I Use</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <h2 class="page-header"><span>4. D3.js 选择器和 DOM 操作</span></h2>
+                <div class="item-cnt">
+                    <p class="item-cnt-h2">D3.js 选择器</p>
+                    <dl class="dl-horizontal">
+                        <dt><code>d3.select</code></dt><dd>从当前文档中选中与指定选择器字符串匹配的第一个元素</dd>
+                        <dt><code>d3.selectAll</code></dt><dd>从当前文档中选中匹配指定选择器的所有的元素</dd>
+                        <dt><code>selection.empty()</code></dt><dd>返回true如果当前选择为空；一个选择是空的，如果它不包含任何元素或null元素</dd>
+                        <dt><code>selection.node()</code></dt><dd>返回当前选择的第一个非空的元素。如果选择为空，则返回null</dd>
+                        <dt><code>selection.size()</code></dt><dd>返回当前选择的元素个数</dd>
+                    </dl>
+                    <p class="item-cnt-h2">D3.js DOM 操作</p>
+                    <dl class="dl-horizontal">
+                        <dt><code>selection.attr(name[, value])</code></dt><dd>设置或获取选中元素的属性</dd>
+                        <dt><code>selection.classed(name[, value])</code></dt>
+                        <dd>
+                            <p>设置选中元素的 class</p>
+                            <ol>
+                                <li>如果 value 为真，则给选中元素添加该 class。如果为假，则移除 class</li>
+                                <li>如果 value 是一个函数，那么这个函数会为每个选中的元素（按顺序）计算，可以引入当前数据元素 <code>d</code> 和当前索引 <code>i</code> 作为参数。</li>
+                                <li>如果 value 没有指定，则根据选中元素是否有指定的 class 返回 true 或者 false</li>
+                            </ol>
+                            <p>一次设置多个 class 的写法有两种：</p>
+                            <ol>
+                                <li><code>selection.classed({'class1': true, 'class2': false})</code></li>
+                                <li><code>selection.classed('class1 class2', true)</code></li>
+                            </ol>
+                        </dd>
+                        <dt><code>selection.style(name[, value[, priority]])</code></dt>
+                        <dd>
+                            <p>设置或返回选中元素的样式属性值</p>
+                            <p>设置多个样式的写法类似于 jQuery：<code>selection.style({'stroke': '#000', 'stroke-width': 1})</code></p>
+                        </dd>
+                        <dt><code>selection.property(name[, value])</code></dt>
+                        <dd>
+                            <p>一些HTML元素具有特殊的属性（比如 <code>input:text</code> 的 value 属性，复选框的 checked 属性），不能使用 attr() 方法访问，可以使用property操作符来获取或设置这些属性</p>
+                            <p>一次设置多个属性: <code>selection.property({'foo': 'bar', 'baz': 'qux'})</code></p>
+                        </dd>
+                        <dt><code>selection.text([value])</code></dt>
+                        <dd>
+                            <p>基于 textContent 属性，设置文本内容将取代所有子元素，如果没有指定 value 值，则会获取到所有子元素的文本内容</p>
+                        </dd>
+                        <dt><code>selection.html([value])</code></dt>
+                        <dd>
+                            <p>基于 innerHTML 属性，设置内部HTML内容将取代任何现有的子元素，如果没有指定 value 值，则会获取到选中元素开始和结束标签之间的 HTML 内容</p>
+                            <p class="item-cnt-tips"><span class="glyphicon glyphicon-tag"></span>selection.html 仅支持 HTML 元素。 SVG 元素和其它非 HTML 元素不支持 innerHTML 属性</p>
+                        </dd>
+                        <dt><code>selection.append(name)</code></dt>
+                        <dd>
+                            <p>在被选元素的结尾（仍然在内部）插入指定 name 的新元素，类似于 jQuery 中的 append() 方法</p>
+                        </dd>
+                        <dt><code>selection.insert(name[, before])</code></dt>
+                        <dd>
+                            <p>在被选元素的内部，指定的 before 选择器之前插入具有指定 name 的新元素，如果before选择器不匹配任何元素，则该方法相当于 append 方法</p>
+                        </dd>
+                        <dt><code>selection.remove()</code></dt>
+                        <dd>
+                            <p>删除选择中的元素</p>
+                        </dd>
+                    </dl>
+
+                </div>
+                <div class="item-link"><a href="https://github.com/mbostock/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C" target="_blank">D3.js API 中文手册</a></div>
+            </div>
+            
+            <div class="item">
+                <h2 class="page-header"><span>5. D3.js 数据绑定和数据处理</span></h2>
+                <div class="item-cnt">
+                    <p class="item-cnt-h2">selection.datum([value])</p>
+                    <p>源码如下：</p>
+                    <div class="code">
+                        <pre class="js">d3_selectionPrototype.datum = function(value) {
+    return arguments.length ? this.property("__data__", value) : this.property("__data__");
+  };</pre>
+                    </div>
+                    <p>获取或设置每个选定的元素绑定的数据。</p>
+                    <p>如果指定 value，就为所有选中的元素设置元素的绑定数据为指定的值。</p>
+                    <p>如果未指定 value，则返回在选择中绑定第一个非空的元素的数据</p>
+                    <div class="d3-test" id="d3-datum">
+                        <p>苹果</p>
+                        <p>香蕉</p>
+                        <p>樱桃</p>
+                    </div>
+                    <div class="code">
+                        <pre class="js">function d3DatumTest(){
+        var fruit = ["Apple","Banana","Cherry"];
+        var $p = d3.select('#d3-datum').selectAll('p');
+        $p.datum(fruit)
+            .text(function(d,i){
+                return d[i];
+            })
+            .append('span')
+            .text(function(d,i){
+                return " "+d[i];
+            })
+            .style({'color':'#f00'})
+        ;
+        console.log($p);            //[Array[3]]
+        console.log($p.datum());    //["Apple", "Banana", "Cherry"]
+    }
+    d3DatumTest();</pre>
+                    </div>
+                    <p>下图显示了 <code>datum()</code> 方法是如何将数据绑定到元素上的，以及在被绑定数据的元素中添加的子元素会继承该元素绑定的数据：</p>
+                    <img src="/images/d3/d3-datum.png">
+                    <p class="item-cnt-h2">selection.data([values[, key]])</p>
+                    <p>将数组的每一项分别绑定到选中的各元素上，而 datum 方法是将整个数组绑定到了各选中的元素上。</p>
+                    <dl>
+                        <dt>数组长度 = 元素数量</dt><dd>update</dd>
+                        <dt>数组长度 > 元素数量，多余部分数据表示缺失元素，需要添加元素</dt><dd>enter</dd>
+                        <dt>数组长度 = 元素数量，多余部分元素表示退出数据绑定</dt><dd>exit</dd>
+                    </dl>
+                    <img src="/images/d3/d3-data-enter&update&exit.png">
+                    <i>图片来自：https://bost.ocks.org/mike/join/</i>
+                    <div class="d3-test" id="d3-data">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div class="code">
+                        <pre class="js">function d3DataTest(){
+        var fruit = [
+            {name: "Apple", amount: 9},
+            {name: "Banana", amount: 5},
+            {name: "Cherry", amount: 2}
+        ];
+        var $p = d3.select('#d3-data').selectAll('p');
+        $p.data(fruit)
+            .text(function(d){
+                return d.amount+" : "+ d.name;
+            });
+        console.log($p);
+    }
+d3DataTest();</pre>
+                    </div>
+                    <p class="item-cnt-h2">selection.enter() & selection.exit()</p>
+                    <p><code>selection.enter()</code>返回缺失元素的部分</p>
+                    <div class="d3-test" id="d3-enter">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div class="code">
+                        <pre class="js">function d3EnterTest(){
+        var fruit = ["Apple","Banana","Cherry","Durian","Fig"];
+        var $p = d3.select('#d3-enter').selectAll('p');
+        $p.data(fruit)
+            .enter(fruit)
+            .append('p')
+            .text(function(d){
+                return d;
+            })
+    }
+d3EnterTest();</pre>
+                    </div>
+                    <p><code>selection.exit()</code>返回需要退出数据绑定的部分</p>
+                    <div class="d3-test" id="d3-exit">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div class="code">
+                        <pre class="js">function d3ExitTest(){
+        var fruit = ["Durian","Fig"];
+        var $p = d3.select('#d3-exit').selectAll('p');
+        $p.data(fruit)
+            .text(function(d){
+                return d;
+            })
+            .exit()
+            .remove();
+    }
+d3ExitTest();</pre>
+                    </div>
+                    <p class="item-cnt-h2">画一个简单的柱形图</p>
+                    <div class="d3-test" id="bar-chart-base"></div>
+                    <p><code>text-anchor</code>属性用于设置 SVG 中 <code>&lt;text&gt;</code> 标签相对于一个指定的坐标的对齐方式，该属性可能的值有：start | middle | end | inherit 。</p>
+                    <img src="/images/d3/text-anchor.jpg">
+                    <p class="item-cnt-h2">可以更新数据的柱形图</p>
+                    <div class="d3-test" id="bar-chart-renew">
+                        <div class="btns clearfix">
+                            <span class="ascending">Ascending</span>
+                            <span class="descending">Descending</span>
+                            <span class="add">Add</span>
+                            <span class="del">Del</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-link">
+                    <a href="https://github.com/mbostock/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C" target="_blank">D3.js API 中文手册</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor" target="_blank">text-anchor</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <h2 class="page-header"><span>6. 比例尺和坐标轴</span></h2>
+                <div class="item-cnt">
+                    <p>Scales are functions that map from an input domain to an output range.</p>
+                    <p>比例尺是把输入域映射为输出范围的函数。</p>
+                    <p>定义域连续的是数值比例尺，定义域离散的是序数比例尺。</p>
+                    <p class="item-cnt-h2">线性比例尺</p>
+                    <dl class="dl-horizontal">
+                        <dt><code>d3.scale.linear()</code></dt>
+                        <dd>创建一个线性比例尺</dd>
+                        <dt><code>linear(x)</code></dt>
+                        <dd>输入一个在定义域中的值 x，返回值域内对应的值</dd>
+                        <dt><code>linear.invert(y)</code></dt>
+                        <dd>输入一个在值域中的值 y，返回定义域内对应的值</dd>
+                        <dt><code>linear.domain([numbers])</code></dt>
+                        <dd>设定或获取定义域</dd>
+                        <dt><code>linear.range([values])</code></dt>
+                        <dd>设定或获取值域</dd>
+                        <dt><code>linear.rangeRound(values)</code></dt>
+                        <dd>用rangeRound() 代替range() 后，则比例尺输出的所有值都会舍入到最接近的整数值。对输出值取整有利于图形对应精确的像素值，避免边缘出现模糊不清的锯齿。</dd>
+                        <dt><code>linear.clamp([boolean])</code></dt>
+                        <dd>默认情况下，线性比例尺可以返回指定范围之外的值。例如，假如给定的值位于输入值域之外，那么比例尺也会返回一个位于输出范围之外的值。不过，在比例尺上调用clamp(true) 后，就可以强制所有输出值都位于指定的范围内。这意味着超出范围的值，会被取整到范围的最低值或最高值（总之是最接近的那个值）。</dd>
+                        <dt><code>linear.nice([count])</code></dt>
+                        <dd>优化 domain （定义域），把两端的值扩展到最接近的整数，但并不是四舍五入的</dd>
+                        <dt><code>linear.ticks([count])</code></dt>
+                        <dd>返回格式化的数字用于显示刻度值的值</dd>
+                        <dt><code>linear.tickFormat(count, [format])</code></dt>
+                        <dd>返回格式化的数字用于显示刻度值的值，格式参数 format 用于指定格式符号，"$" - 本地货币符号的前缀或后缀，"%" - 转化为百分比数值</dd>
+                    </dl>
+                    <p class="item-cnt-h2">序数比例尺</p>
+                    <dl class="dl-horizontal">
+                        <dt><code>d3.scale.ordinal()</code></dt>
+                        <dd>创建一个序数比例尺</dd>
+                    </dl>
+                    <p class="item-cnt-h2">返回颜色的序数比例尺</p>
+                    <p><code>d3.scale.category10()</code></p>
+                    <p>创建一个序数比例尺，返回以下10种类型的颜色</p>
+                    <div class="d3-test" id="category10"></div>
+                    <p><code>d3.scale.category20()</code></p>
+                    <p>创建一个序数比例尺，返回以下20种类型的颜色</p>
+                    <div class="d3-test" id="category20"></div>
+                    <p><code>d3.scale.category20b()</code></p>
+                    <p>创建一个序数比例尺，返回以下20种类型的颜色</p>
+                    <div class="d3-test" id="category20b"></div>
+                    <p><code>d3.scale.category20c()</code></p>
+                    <p>创建一个序数比例尺，返回以下20种类型的颜色</p>
+                    <div class="d3-test" id="category20c"></div>
+                    <p class="item-cnt-h2">坐标轴</p>
+                    <dl class="dl-horizontal">
+                        <dt><code>d3.svg.axis()</code></dt>
+                        <dd>创建一个坐标轴</dd>
+                        <dt><code>axis(selection)</code></dt>
+                        <dd>将坐标轴应用到选择器上，选择器必须包含svg或者g元素</dd>
+                        <dt><code>axis.scale([scale])</code></dt>
+                        <dd>如果指定了 scale 参数则设置刻度尺，并返回轴。如果未指定 scale 参数，将返回坐标轴当前的刻度尺，默认为线性刻度</dd>
+                        <dt><code>axis.orient([orientation])</code></dt>
+                        <dd>设置坐标轴的方向，"top"、"bottom"、"left"、"right"</dd>
+                        <dt><code>axis.ticks([arguments…])</code></dt>
+                        <dd>参数会传递给scale.ticks生成刻度值</dd>
+                        <dt><code>axis.tickValues([values])</code></dt>
+                        <dd>如果指定了 values 数组，指定的数值 将用于刻度，而不是使用使用比例尺的自动刻度生成器</dd>
+                        <dt><code>axis.tickSize([inner, outer])</code></dt>
+                        <dd>如果指定了 inner 和 outer ，设置内部和外部刻度尺寸为指定的值并返回轴。如果 inner 和 outer 没有指定，返回当前的内部刻度尺寸，默认是6。</dd>
+                        <dt><code>axis.innerTickSize([size])</code></dt>
+                        <dd>设置内部刻度尺寸为指定的值</dd>
+                        <dt><code>axis.outerTickSize([size])</code></dt>
+                        <dd>设置外部刻度尺寸为指定的值</dd>
+                    </dl>
+                    <div class="d3-test" id="bar-chart-axis"></div>
+                    <div class="d3-test" id="scatter-chart-axis"></div>
+                </div>
+                <div class="item-link"><a href="https://github.com/d3/d3/wiki/SVG-%E8%BD%B4" target="_blank">D3.js API 中文手册</a></div>
+            </div>
+
+
+
+
+
+
+
+
+            <!--.item>h2.page-header>span^+.item-cnt+.item-link>a[target="_blank"]{参考地址}-->
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/jquery.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/js/d3.min.js"></script>
+<script src="/js/d3.js-note.js"></script>
+</body>
+</html>

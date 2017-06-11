@@ -1,0 +1,96 @@
+@charset "UTF-8";
+body{font:14px/1.42857143 "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;}
+body,form,h1,h2,h3,h4,h5,h6,p,ul{margin:0}
+ul{padding-left:0;list-style:none;}
+td,th{padding:0}
+img{border:0;-ms-interpolation-mode:bicubic}
+a{text-decoration:none;color:#666}
+a:active,a:hover{outline:0}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline}
+button,input{line-height:normal}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+.clearfix{*zoom:1;}
+.clearfix:after {content:".";display:block;height:0;visibility:hidden;clear:both;}
+
+.jumbotron{position:fixed;top:0;z-index:99999;width:100%;margin-bottom:0;font-family:Impact,'Helvetica Neue',Helvetica,Arial,sans-serif;color:#f10017;text-shadow:0 8px 9px #BB1A2B,-2px -2px 2px #fff;font-weight:700;text-transform:uppercase;letter-spacing:4px;background-color:#ccc;background-image:linear-gradient(45deg,rgba(255,255,255,.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.2) 75%,transparent 75%,transparent);background-size:500px 500px}
+.jumbotron.sm{background-color:rgba(255,255,255,.9);background-image:none;padding:0;transition:all .1s linear;box-shadow:0 0 25px #fff}
+.jumbotron.sm h1{font-size:40px;line-height:1.5;margin:0;background-image:none}
+.jumbotron small{color:#000;text-shadow:0 8px 9px #666,-2px -2px 2px #fff}
+.glyphicon{padding:0 .5em}
+.cnt-wrap{padding:202px 5%;margin:0 -15px}
+/*the index*/
+.index{display:none;position:fixed;left:10px;top:10px;z-index:999999;height:500px;}
+.index ol{list-style-type:none}
+.index ol{background:#fff;padding:20px;border-radius:5px;box-shadow:0 3px 15px #333}
+.index ol:after{content:".";display:block;height:0;visibility:hidden;clear:both}
+.intro-pic:after,.intro-pic:before,.item-cnt-ul>li:before{content:"";display:block}
+.index li{height:25px;line-height:25px;margin:0 10px 10px 0;border:1px solid #ded4c6;padding:0 1em;border-radius:5px;font-size:12px}
+.index li:hover{background:#eee}
+/*main*/
+.sheet-bg{height:380px;margin-bottom:35px;border-radius:25px;background:url(../images/d3/LakeOHara.jpg) 50% 0 no-repeat fixed;}
+    /*item*/
+.item{padding:20px 5%;background:#efefef;border-radius:10px;margin-bottom:35px}
+        /*item h1*/
+.item .page-header{height:45px;line-height:45px;margin-top:20px;border-bottom:5px solid #f10017;font-size:26px;}
+.item .page-header span{display:inline-block;*display:inline;zoom:1;padding:0 20px;height:45px;border-radius:10px 10px 0 0;background:#f10017;color:#fff;}
+        /*item h2*/
+.item-cnt-h2{height:35px;line-height:35px;font-size:22px;text-indent:0;border-bottom:2px dashed #999;margin:1em 0;padding-bottom:.3em;color:#000}
+        /*item h2*/
+.item-cnt-h3{height:30px;line-height:30px;font-size:18px;text-indent:0;margin-top:1em;color:#000;}
+.item-cnt-h3 .glyphicon{color:#6ce26c;font-size:22px;padding:0 .5em 0 0;}
+        /*item ul with dot*/
+.item-cnt-ul{padding-left:20px;margin-top:10px;}
+.item-cnt-ul>li{position:relative;line-height:20px;margin-bottom:5px;}
+.item-cnt-ul>li:before{width:10px;height:10px;border-radius:5px;position:absolute;left:-20px;top:5px;background:#f10017}
+        /*item img*/
+.item img{display:block;margin:10px auto;max-width:100%}
+        /*item reference lists*/
+.item-link{margin-top:30px;height:30px;line-height:30px;border-radius:30px;background:#fff;padding-left:30px}
+.item-link:hover{box-shadow:0 5px 10px -5px #000;transition:all .3s linear}
+.item-link a{margin-right:2em;color:#333;font-style:italic;font-family:'微软雅黑','Microsoft Yahei',Arial,sans-serif}
+.item-link a:hover{color:#2ec866;transition:all .3s linear}
+        /*item tips*/
+.item-cnt-tips{font-size:16px;padding:15px 0 5px;}
+.item-cnt-tips .glyphicon{color:#f10017;}
+        /*code highlight*/
+.code {position:relative;margin:10px 0 30px;-webkit-box-shadow:0 10px 20px -8px #000;-moz-box-shadow:0 10px 20px -8px #000;box-shadow:0 10px 20px -8px #000;}
+.code pre{padding:10px 0;margin-left:56px;border-radius:0 5px 5px 0;border:0;overflow:hidden;font-size:13px;}
+.code .line-num{position:absolute;top:0;left:0;padding:10px;border-radius:5px 0 0 5px;background:#23241f;text-align:right;font-family:"MV BOLI", 'trebuchet MS', 'lucida sans';font-size:12px;}
+.code .line-num>li{width:36px;padding-right:10px;border-right:3px solid #6ce26c;color:#fff;}
+
+/*the pic in intro*/
+.intro-pic{position:relative;width:100%;margin:20px auto;overflow:hidden}
+.intro-pic:after,.intro-pic:before{width:100%;position:absolute;background:#efefef;height:16px;z-index:2}
+.intro-pic:after{bottom:-16px;box-shadow:0 -8px 16px rgba(0,0,0,.3)}
+.intro-pic:before{top:-16px;box-shadow:0 8px 16px rgba(0,0,0,.3)}
+.intro-pic img{width:100%;margin:0 auto;transition:all 1s ease;}
+.intro-pic img:hover{transform:scale(1.1,1.1);-ms-transform:scale(1.1,1.1);-moz-transform:scale(1.1,1.1);-webkit-transform:scale(1.1,1.1);-o-transform:scale(1.1,1.1)}
+/*dl horizontal*/
+.dl-horizontal dd {line-height:1.7;}
+@media (min-width: 768px) {
+    .dl-horizontal dt{float:left;width:300px;overflow:hidden;clear:left;text-align:right;text-overflow:ellipsis;white-space:nowrap;}
+    .dl-horizontal dd{margin:10px 0 10px 320px;}
+}
+svg {margin:10px 0;}
+
+/*d3-test*/
+.d3-test {margin:20px 0;padding:10px 20px;border-radius:5px;background:#fff;}
+
+/* #bar-chart-renew */
+#bar-chart-renew .btns {width:600px;text-align:center;}
+#bar-chart-renew .btns span {display:inline-block;*display:inline;zoom:1;width:100px;height:35px;line-height:35px;margin-right:10px;text-align:center;border-radius:5px;color:#fff;font-weight:bold;font-size:16px;cursor:pointer;}
+#bar-chart-renew .ascending {background:#5d85a5;}
+#bar-chart-renew .descending {background:#00c792;}
+#bar-chart-renew .add {background:#ffbf00;}
+#bar-chart-renew .del {background:#f10017;}
+
+/*axis*/
+.axis path, .axis line {fill:none;stroke:#000;shape-rendering:crispEdges;}
+.axis text {font-family:"LatoLatinWebThin", "LatoWebThin", "LatoLatinWeb", "LatoWeb", "Lato";font-size:12px;}

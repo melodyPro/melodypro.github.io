@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebStorm: The Smartest JavaScript IDE</title>
+    <link rel="stylesheet" type="text/css" href="/css/webstorm/reveal.css">
+    <link rel="stylesheet" type="text/css" href="/css/webstorm/white.css">
+    <link rel="stylesheet" type="text/css" href="/css/webstorm/style.css">
+</head>
+<body>
+<script>
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET", "/images/webstorm/webstorm.svg", true);
+    ajax.onload = function(e) {
+        document.body.insertAdjacentHTML("afterBegin", '<div">' + ajax.responseText + '</div>');
+    }
+    ajax.send();
+</script>
+<div class="reveal">
+    <div class="slides">
+        <section data-background="#272727">
+            <svg class="icon-beam" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#beam-1"/></svg>
+            <h1>前端分享会</h1>
+            <h3>WebStorm 初体验</h3>
+            <a class="icon-webstorm" target="_blank" href="http://www.jetbrains.com/webstorm/">
+                <svg class="" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#webstorm"/></svg>
+            </a>
+            <p class="author">MelodyPro 2016/7/7</p>
+        </section>
+        <section>
+            <section data-background="/images/webstorm/what-is-ws.jpg">
+                <div class="text-box-1">
+                    <h2>什么是 WebStorm</h2>
+                    <p class="align-left">WebStorm 是jetbrains公司旗下一款JavaScript 开发工具。被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。</p>
+                </div>
+            </section>
+            <section data-background="#2c2f31">
+                <h2>WebStorm 的优点</h2>
+                <ul>
+                    <li>JetBrains 公司对 WebStorm 功能的持续改进和维护</li>
+                    <li>
+                        <p>几乎支持所有前端最新的语言</p>
+                        <div class="logos-list">
+                            <svg class="logos-list-html5" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#html5"/></svg>
+                            <svg class="logos-list-css3" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#css3"/></svg>
+                            <svg class="logos-list-javascript-grayscale" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#javascript-grayscale"/></svg>
+                            <svg class="logos-list-typescript" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#typescript"/></svg>
+                            <svg class="logos-list-coffeescript" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#coffeescript"/></svg>
+                            <svg class="logos-list-dart" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#dart"/></svg>
+                            <svg class="logos-list-sass" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#sass"/></svg>
+                            <svg class="logos-list-less-grayscale" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#less-grayscale"/></svg>
+                            <svg class="logos-list-stylus" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#stylus"/></svg>
+                            <svg class="logos-list-nodejs" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#nodejs"/></svg>
+                        </div>
+                    </li>
+                    <li>自动保存，省去了<code>ctrl + S</code>的麻烦</li>
+                    <li>很多编辑器只要文件关闭了就没有历史记录了，但是 WebStorm 有，如果遇到突发情况（停电等），不至于丢失代码</li>
+                </ul>
+            </section>
+            <section data-background="#2c2f31">
+                <ul>
+                    <li>集成了很多功能，包括 <a target="_blank" href="http://docs.emmet.io/cheat-sheet/">Emmet</a> 代码快速编写神器，Git、SVN 等版本控制系统，可以使用 Grunt、gulp 等构建工具</li>
+                    <li>主题多样，可根据个人喜好安装特定<a target="_blank" href="http://color-themes.com/?view=index">主题文件</a></li>
+                    <li>强力的代码分析系统，提示代码错误，防止后台程序猿吐槽</li>
+                    <li>CSS 中颜色的智能显示，附带调色板</li>
+                    <li>插入图片是提示图片尺寸，插入以后也可以预览图片</li>
+                    <li>各种提高效率的快捷键：
+                        <br><code>ctrl + D</code> & <code>ctrl + Y</code>
+                        <br><code>ctrl + W</code>
+                    </li>
+                </ul>
+            </section>
+            <section data-background="/images/webstorm/shortage.jpg">
+                <div class="text-box-2">
+                    <h2>WebStorm 的缺点</h2>
+                    <ul>
+                        <li>占内存<br>运存4G以上可忽略不计</li>
+                        <li>没有别的缺点了<br>卖个萌 =￣ω￣=</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section data-background="/images/webstorm/start.jpg">
+                <div class="text-box-3">
+                    <h2>开始使用 WebStorm</h2>
+                    <h3>1. 更改主题</h3>
+                    <ul>
+                        <li><a target="_blank" href="http://www.phpstorm-themes.com/">官方</a></li>
+                        <li><a target="_blank" href="http://color-themes.com/?view=index">还不满足？点这儿</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section data-background="/images/webstorm/new.jpg">
+                <div class="text-box-4">
+                    <h3>2. 新建一个项目</h3>
+                    <ul>
+                        <li>新建文件模板</li>
+                        <li>行号、缩进对齐线、代码自动换行、折叠、注释 <code>ctrl + /</code>&<code> ctrl + shift + /</code></li>
+                        <li>代码检查</li>
+                        <li>浏览器预览，右上角 or <code>alt + F12</code></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section data-background="/images/webstorm/thanks.jpg">
+            <div class="text-box-5">
+                <h1>谢谢！</h1>
+                <p>期待下一次的分享会</p>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/js/reveal.js"></script>
+<script src="/js/jquery.js"></script>
+<script>
+    Reveal.initialize();
+    Reveal.configure({
+        width: 1200,
+        height: 875,
+        backgroundTransition: 'slide'
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

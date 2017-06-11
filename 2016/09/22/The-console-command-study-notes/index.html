@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+    <title>The console command study notes | MelodyPro</title>
+
+    <meta name="keywords" content="Chrome,console," />
+
+<script src="/js/loading.min.js"></script>
+<link rel="stylesheet" href="/css/nprogress.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- stylesheets list from config.yml -->
+    
+        <link rel="stylesheet" href="/css/style.css">
+    
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-85277623-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+<p>
+  2016/09/22/The-console-command-study-notes/
+</p>
+  
+  <div class="loader">
+    <div class="loader-inner">
+      <img class="loader-logo" src="/images/logo.svg" alt="MelodyPro">
+    </div>
+  </div>
+  
+  <div class="logo">
+    <a href="/">
+        <img src="/images/logo.svg" alt="MelodyPro">
+    </a>
+</div>
+  <div class="scroll-btn">
+    <div class="scroll-btn-arrow"></div>
+    <span class="scroll-btn-txt">Scroll</span>
+</div>
+  <div class="nav">
+    <div class="stars"></div>
+    <div class="menu">
+        <span class="menu-line menu-line-first"></span>
+        <div class="menu-line-middle">
+            <span class="menu-line-middle-left"></span>
+            <span class="menu-line-middle-right"></span>
+        </div>
+        <span class="menu-line menu-line-last"></span>
+    </div>
+    <p class="nav-label">My FrontEnd Notes</p>
+    <ul class="nav-list">
+        <li><a href="/"><i class="fa fa-music"></i>Home</a></li>
+        <li><a href="/tags"><i class="fa fa-tags"></i>Tags</a></li>
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archives</a></li>
+        <li><a href="/about"><i class="fa fa-smile-o"></i>About</a></li>
+    </ul>
+    <ul class="nav-link">
+        <li><a href="https://github.com/melodypro" target="_blank"><i class="fa fa-github"></i>GitHub</a></li>
+    </ul>
+    <div class="visit-stats">
+    <div class="site-pv">
+        <p class="site-pv-title">Site PV</p>
+        <div class="site-pv-num">
+            <i class="fa fa-user"></i>
+            <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span>
+        </div>
+    </div>
+    <div class="page-pv">
+        <p class="page-pv-title">Page PV</p>
+        <div class="page-pv-num">
+            <i class="fa fa-eye"></i>
+            <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+        </div>
+    </div>
+</div>
+</div>
+  <div class="main">
+    
+<article class="post">
+    <h1 class='post-title'>
+        <span>The console command study notes</span>
+    </h1>
+    <div class="post-info">
+        <span class="post-info-item">
+            <span>更新于:</span>
+            <span>2017.02.16</span>
+        </span>
+        <span class="post-info-item">
+            <span>发表于:</span>
+            <span>2016.09.22</span>
+        </span>
+        
+        <span class="post-info-item">
+          <i class="fa fa-user"></i>
+          <span>MelodyPro</span>
+        </span>
+        
+
+        <div class="post-info-item">
+            <i class="fa fa-tags"></i>
+            <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/console/">console</a></li></ul>
+        </div>
+
+        
+        <span class="post-info-item">
+          <i class="icon-comment"></i>
+          <a href="http://melodypro.github.io/2016/09/22/The-console-command-study-notes/#disqus_thread"></a>
+        </span>
+        
+
+    </div>
+    <section class='post-content'>
+        <div class="post-content-md">
+            <h2 id="常用-console-命令"><a href="#常用-console-命令" class="headerlink" title="常用 console 命令"></a>常用 console 命令</h2><h3 id="显示信息"><a href="#显示信息" class="headerlink" title="显示信息"></a>显示信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'信息'</span>);</div><div class="line"><span class="built_in">console</span>.error(<span class="string">'错误'</span>);</div><div class="line"><span class="built_in">console</span>.warn(<span class="string">'警告'</span>);</div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-1.jpg" alt="显示信息"></p>
+<h3 id="分组显示信息"><a href="#分组显示信息" class="headerlink" title="分组显示信息"></a>分组显示信息</h3><p>利用 <code>console.group()</code> 和 <code>console.groupEnd()</code> 分组显示信息，支持嵌套。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.group(<span class="string">'Number'</span>);</div><div class="line"><span class="built_in">console</span>.group(<span class="string">'Number A'</span>);</div><div class="line"><span class="built_in">console</span>.warn(<span class="string">'4'</span>);</div><div class="line"><span class="built_in">console</span>.warn(<span class="string">'0'</span>);</div><div class="line"><span class="built_in">console</span>.warn(<span class="string">'4'</span>);</div><div class="line"><span class="built_in">console</span>.groupEnd();</div><div class="line"><span class="built_in">console</span>.group(<span class="string">'Number A'</span>);</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'5'</span>);</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'0'</span>);</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'2'</span>);</div><div class="line"><span class="built_in">console</span>.groupEnd();</div><div class="line"><span class="built_in">console</span>.groupEnd();</div><div class="line"><span class="built_in">console</span>.group(<span class="string">'lang'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"HTML"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"CSS"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Javascript"</span>);</div><div class="line"><span class="built_in">console</span>.groupEnd();</div></pre></td></tr></table></figure></p>
+<p><img src="/images/console/console-2.jpg" alt="分组显示信息"></p>
+<h3 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h3><p>以上 4 种显示信息的命令都可以使用占位符。支持的占位符有四种，分别是字符) <code>%s</code>、整数( <code>%d</code> 或 <code>%i</code> )、浮点数 <code>%f</code> 和对象 <code>%o</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.info(<span class="string">'%s的%d种方法'</span>,<span class="string">'显示信息'</span>,<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-3.jpg" alt="占位符"><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> list = &#123;&#125;;</div><div class="line">list.data = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>];</div><div class="line">list.name = <span class="string">'console'</span>;</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'list: %o'</span>,list);</div></pre></td></tr></table></figure></p>
+<p><img src="/images/console/console-4.jpg" alt="占位符"><br>还有一种特殊的标示符 <code>%c</code>，对输出的文字可以附加特殊的样式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'%cLife is short, you need Python'</span>,<span class="string">'font-size:14px;font-weight:bold;font-style:italic;font-family:Helvetica Neue, Helvetica;color:#000;text-shadow:0 8px 9px #666,-2px -2px 2px #fff;'</span>);</div></pre></td></tr></table></figure></p>
+<p><img src="/images/console/console-5.jpg" alt="占位符"></p>
+<h3 id="console-table-按表格显示"><a href="#console-table-按表格显示" class="headerlink" title="console.table() 按表格显示"></a>console.table() 按表格显示</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lang = [</div><div class="line">    &#123;<span class="string">"Programming Language"</span>: <span class="string">"Python"</span>, <span class="attr">Ratings</span>: <span class="string">"4.302%"</span> , <span class="string">"Sep 2016"</span>: <span class="number">5</span>&#125;,</div><div class="line">    &#123;<span class="string">"Programming Language"</span>: <span class="string">"JavaScript"</span>, <span class="attr">Ratings</span>: <span class="string">"2.929%"</span> , <span class="string">"Sep 2016"</span>: <span class="number">6</span>&#125;,</div><div class="line">    &#123;<span class="string">"Programming Language"</span>: <span class="string">"R"</span>, <span class="attr">Ratings</span>: <span class="string">"1.684%"</span> , <span class="string">"Sep 2016"</span>: <span class="number">18</span>&#125;</div><div class="line">]</div><div class="line"><span class="built_in">console</span>.table(lang);</div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-6.jpg" alt="按表格显示"></p>
+<h3 id="显示对象的信息"><a href="#显示对象的信息" class="headerlink" title="显示对象的信息"></a>显示对象的信息</h3><p><code>console.dir()</code> 可以显示一个对象所有的属性和方法，以下就是 <code>console</code> 对象的所有属性和方法。<br><img src="/images/console/console-7.jpg" alt="显示对象的信息"></p>
+<h3 id="显示-HTML-节点内容"><a href="#显示-HTML-节点内容" class="headerlink" title="显示 HTML 节点内容"></a>显示 HTML 节点内容</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"test-console-dirxml"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> list = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'test-console-dirxml'</span>)[<span class="number">0</span>];</div><div class="line">    <span class="built_in">console</span>.dirxml(list);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-8.jpg" alt="显示 HTML 节点内容"></p>
+<h3 id="显示代码运行时间"><a href="#显示代码运行时间" class="headerlink" title="显示代码运行时间"></a>显示代码运行时间</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"test-console-time"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> items = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"li"</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;items.length;i++)&#123;</div><div class="line">            <span class="keyword">var</span> x = <span class="built_in">Math</span>.pow(i,<span class="number">10</span>);</div><div class="line">            (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;x;j++)&#123;&#125;</div><div class="line">                items[i].innerHTML = x;</div><div class="line">            &#125;)(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.time(<span class="string">'foo 计时器'</span>);</div><div class="line">    foo();</div><div class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'foo 计时器'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-9.jpg" alt="显示代码运行时间"></p>
+<h3 id="console-trace-追踪函数调用过程"><a href="#console-trace-追踪函数调用过程" class="headerlink" title="console.trace() 追踪函数调用过程"></a>console.trace() 追踪函数调用过程</h3><h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"test-console-time"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> items = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"li"</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;items.length;i++)&#123;</div><div class="line">            <span class="keyword">var</span> x = <span class="built_in">Math</span>.pow(i,<span class="number">10</span>);</div><div class="line">            (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;x;j++)&#123;&#125;</div><div class="line">                items[i].innerHTML = x;</div><div class="line">            &#125;)(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.profile(<span class="string">'foo 性能分析'</span>);</div><div class="line">    foo();</div><div class="line">    <span class="built_in">console</span>.profileEnd(<span class="string">'foo 性能分析'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/console/console-10.jpg" alt="性能分析"></p>
+<h3 id="清空控制台"><a href="#清空控制台" class="headerlink" title="清空控制台"></a>清空控制台</h3><p>console.clear();</p>
+<h3 id="0-4"><a href="#0-4" class="headerlink" title="$0~$4"></a><code>$0~$4</code></h3><p>依次返回选中过的前5个元素，<code>$0</code> 返回当前选中元素，不足 5 个时返回 <code>undefined</code>。</p>
+
+        </div>
+        <div class="post-toc">
+    <div class="post-toc-box">
+        <p class="toc-title">Content</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用-console-命令"><span class="toc-number">1.</span> <span class="toc-text">常用 console 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#显示信息"><span class="toc-number">1.1.</span> <span class="toc-text">显示信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组显示信息"><span class="toc-number">1.2.</span> <span class="toc-text">分组显示信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#占位符"><span class="toc-number">1.3.</span> <span class="toc-text">占位符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#console-table-按表格显示"><span class="toc-number">1.4.</span> <span class="toc-text">console.table() 按表格显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示对象的信息"><span class="toc-number">1.5.</span> <span class="toc-text">显示对象的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示-HTML-节点内容"><span class="toc-number">1.6.</span> <span class="toc-text">显示 HTML 节点内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示代码运行时间"><span class="toc-number">1.7.</span> <span class="toc-text">显示代码运行时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#console-trace-追踪函数调用过程"><span class="toc-number">1.8.</span> <span class="toc-text">console.trace() 追踪函数调用过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能分析"><span class="toc-number">1.9.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清空控制台"><span class="toc-number">1.10.</span> <span class="toc-text">清空控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-4"><span class="toc-number">1.11.</span> <span class="toc-text">$0~$4</span></a></li></ol></li></ol>
+    </div>
+</div>
+    </section>
+    
+    <section class="post-comments" id="comments">
+        
+    </section>
+    
+</article>
+
+    <footer class="footer">
+    <div class="footer-cpr">
+        <span>©</span>
+        <span>2016-2017</span>
+        <span class="footer-cpr-heart"></span>
+        <span class="footer-cpr-author">MelodyPro</span>
+    </div>
+    <div class="footer-powered-by">
+        Powered By <a class="theme-link" href="http://hexo.io" target="_blank">Hexo</a>
+    </div>
+    <div class="footer-theme-info">
+        Theme <a class="theme-link" href="#" target="_blank">Chord</a>
+    </div>
+</footer>
+  </div>
+  <script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/jquery.smoove.js".js"></script>
+<script src="/js/index.min.js"></script>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>

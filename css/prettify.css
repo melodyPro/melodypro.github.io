@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* Pretty printing styles. Used with prettify.js.
+ * This version is slight modified based on the original version.
+ * Created by HuangWen on 2015/9/15.
+ */
+.pln {color:#FFF;}
+.str {color:#FF9A00;}
+.kwd {color:#377EB8;font-weight:bold;}
+.com {color:#FFDA2B;}
+.typ {color:#E4211C;}
+.lit {color:#00BA38;font-weight:bold;}
+.pun {color:#FFF;}
+.opn {color:#93A1A1;}
+.clo {olor:#93A1A1;}
+.tag {color:#377EB8;}
+.atn {color:#E4211C;}
+.atv {color:#00BA38;}
+.dec {color:#F00;}
+.var {color:teal;}
+.fun {color:#DC322F;}
+/* Put a border around prettyprinted code snippets. */
+pre.prettyprint {background-color:#333;padding:10px;border:0;}
+pre.prettyprint.linenums {-webkit-box-shadow:0 10px 20px -8px #000;-moz-box-shadow:0 10px 20px -8px #000;box-shadow:0 10px 20px -8px #000;}
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {color:#1E347B;margin:0 0 0 35px;padding:0;font-size:13px;font-family:Source Code Pro, Microsoft Yahei, "微软雅黑", Arial, Helvetica, sans-serif;
+  list-style:none; /* 清除列表默认的编码*/
+  *list-style:decimal; /* 让IE6/7具有默认的编码 */
+  counter-reset:li; /* 创建一个计数器 */
+}
+ol.linenums>li {position:relative;color:#fff;font-size:13px;line-height:20px;padding-left:15px;border-left:3px solid #6ce26c;}
+ol.linenums>li:before {position:absolute;left:-40px;top:0;min-width:28px;text-align:right;white-space:pre;font-family:"MV BOLI", 'trebuchet MS', 'lucida sans';
+  content: counter(li);
+  counter-increment: li;
+}
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 {list-style-type:normal;}
+
+/*
+/!* Alternate shading for lines *!/
+li.L1,li.L3,li.L5,li.L7,li.L9 {background:#eee;}
+*/
+
