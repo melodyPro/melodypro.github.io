@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
-    <title>Study Notes of JavaScript: Types &amp; Grammar | MelodyPro</title>
+    <title>JavaScript: Types &amp; Grammar | MelodyPro</title>
 
     <meta name="keywords" content="JavaScript," />
 
 <script src="/js/loading.min.js"></script>
-<link rel="stylesheet" href="/css/nprogress.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- stylesheets list from config.yml -->
@@ -90,12 +89,12 @@
     
 <article class="post">
     <h1 class='post-title'>
-        <span>Study Notes of JavaScript: Types &amp; Grammar</span>
+        <span>JavaScript: Types &amp; Grammar</span>
     </h1>
     <div class="post-info">
         <span class="post-info-item">
             <span>Updated on:</span>
-            <span>2017.06.21</span>
+            <span>2017.06.25</span>
         </span>
         <span class="post-info-item">
             <span>Published on:</span>
@@ -116,7 +115,7 @@
         
         <span class="post-info-item">
           <i class="icon-comment"></i>
-          <a href="http://melodypro.github.io/2016/02/12/Study-Notes-of-JavaScript-Types-and-Grammar/#disqus_thread"></a>
+          <a href="http://melodypro.github.io/2016/02/12/JavaScript-Types-and-Grammar/#disqus_thread"></a>
         </span>
         
 
@@ -135,15 +134,15 @@
 <li>It’s important to note that using the <code>var</code> operator to define a variable makes it local to the scope in which it was defined. For example, defining a variable inside of a function using <code>var</code> means that the variable is destroyed as soon as the function exits, as shown here:</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> num=<span class="number">1</span>;      <span class="comment">//局部变量</span></div><div class="line">&#125;</div><div class="line">test();</div><div class="line">alert(num);</div></pre></td></tr></table></figure>
-<p><img src="/images/js-error-2.png" alt=""></p>
+<p><img src="/JavaScript/images/js-error-2.png" alt=""></p>
 <h2 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h2><p>There are fi ve simple data types (also called primitive types) in ECMAScript: Undefi ned, Null,<br>Boolean, Number, and String. There is also one complex data type called Object, which is an<br>unordered list of name-value pairs.</p>
 <div class="data-type-svg"></div>
 
-<script src="/js/jquery-2.1.3.js"></script>
+<script src="/JavaScript/js/jquery-2.1.3.js"></script>
 
-<script src="/js/d3.min.js"></script>
+<script src="/JavaScript/js/d3.min.js"></script>
 
-<script src="/js/js-note.js"></script>
+<script src="/JavaScript/js/js-note.js"></script>
 
 <style type="text/css">
     .data-type-svg {overflow:auto;}
@@ -165,7 +164,7 @@
 <hr>
 <blockquote>
 <h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a><strong>不同点</strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">alert(<span class="literal">null</span>===<span class="literal">undefined</span>);    <span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> banana;</div><div class="line">alert(<span class="keyword">typeof</span> banana);       <span class="comment">//undefined</span></div><div class="line">alert(<span class="keyword">typeof</span> apple);        <span class="comment">//undefined</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> cherry=<span class="literal">undefined</span>;</div><div class="line">alert(cherry === <span class="literal">undefined</span>);     <span class="comment">//true</span></div><div class="line"> </div><div class="line">alert(cherry);       <span class="comment">//undefined</span></div><div class="line"> </div><div class="line">alert(banana);       <span class="comment">//undefined</span></div><div class="line">alert(apple);</div></pre></td></tr></table></figure>
-<p><img src="/images/js-error-3.png" alt=""></p>
+<p><img src="/JavaScript/images/js-error-3.png" alt=""></p>
 <p>对未初始化的变量 <code>banana</code> 和未声明的变量 <code>apple</code> 执行 <code>typeof</code> 操作符都返回了 <code>undefined</code> 值。<br>但未声明的变量 apple 在执行其他操作时，则会报错。说明初始化为 undefined 值的变量、未初始化的变量 和 未声明的变量还是不一样的。</p>
 <p><code>null</code> 表示 一个被赋值为表示 <strong>没有值</strong> 的值 ，<em>即该处不应该有值</em>。典型用法是：</p>
 <ol>
