@@ -10,12 +10,12 @@ $(function(){
 			.append("g")
 			.attr("transform", "translate(150,0)");
 
-		d3.json("/json/data-type.json", function (error,data) {
+		d3.json("/JavaScript/js/data-type.json", function (error,data) {
 			var nodes=cluster.nodes(data);
 			var links=cluster.links(nodes);
 
 			var link = svg.selectAll(".link")
-				.data(root.descendants().slice(1))
+				.data(links)
 				.enter().append("path")
 				.attr("class", "link")
 				.attr("d", function(d) {
