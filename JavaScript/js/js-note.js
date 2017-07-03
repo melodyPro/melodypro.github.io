@@ -1,7 +1,7 @@
 $(function(){
     var dataType = function(){
         var width=600, height=300;
-        var cluster=d3.layout.cluster()     //???????????????
+        var cluster=d3.layout.cluster()     //¶¨ÒåÒ»¸ö¼¯ÈºÍ¼²¼¾Ö
             .size([width-300, height]);
 
         var svg=d3.select(".data-type-svg").append("svg")
@@ -10,12 +10,12 @@ $(function(){
             .append("g")
             .attr("transform", "translate(150,0)");
 
-        var diagonal=d3.svg.diagonal()      //?????????????????
-            .projection(function (d) {      //projection ??ä»»????????x??y??????????????????Î±??????
+        var diagonal=d3.svg.diagonal()      //Éú³ÉÒ»Ìõ±´Èû¶ûÇúÏß
+            .projection(function (d) {      //projection µã±ä»»Æ÷£¬½»»»xºÍyÖá×ø±ê£¬½«Ä¬ÈÏ×ÝÏòµÄÍ¼ÐÎ±äÎªºáÏò
                 return [d.y, d.x];
             });
 
-        d3.json("/JavaScript/js/data-type.json", function (error,data) {
+        d3.json("/json/data-type.json", function (error,data) {
             var nodes=cluster.nodes(data);
             var links=cluster.links(nodes);
 
@@ -33,7 +33,7 @@ $(function(){
                 .attr("class", "node")
                 .attr("transform",function(d){
                     return "translate(" + d.y + "," + d.x + ")";
-                });
+                })
 
             node.append("circle")
                 .attr("r",5);
@@ -50,7 +50,7 @@ $(function(){
                     return d.name;
                 });
         })
-    };
+    }
 
     dataType();
-});
+})
