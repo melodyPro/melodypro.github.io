@@ -1,5 +1,5 @@
 $(function(){
-	var dataType = function(){
+	(function dataType(){
 		var width=600, height=300;
 		var cluster=d3.cluster()     //定义一个集群图布局
 			.size([width-300, height]);
@@ -10,21 +10,20 @@ $(function(){
 			.append("g")
 			.attr("transform", "translate(150,0)");
 
-		var diagonal=d3.svg.diagonal()      //生成一条贝塞尔曲线
-			.projection(function (d) {      //projection 点变换器，交换x和y轴坐标，将默认纵向的图形变为横向
-				return [d.y, d.x];
-			});
-
 		d3.json("/json/data-type.json", function (error,data) {
 			var nodes=cluster.nodes(data);
 			var links=cluster.links(nodes);
 
-			var link=svg.selectAll(".link")
-				.data(links)
-				.enter()
-				.append("path")
+			var link = svg.selectAll(".link")
+				.data(root.descendants().slice(1))
+				.enter().append("path")
 				.attr("class", "link")
-				.attr("d", diagonal);
+				.attr("d", function(d) {
+					return "M" + d.y + "," + d.x
+						+ "C" + (d.parent.y + 100) + "," + d.x
+						+ " " + (d.parent.y + 100) + "," + d.parent.x
+						+ " " + d.parent.y + "," + d.parent.x;
+				});
 
 			var node=svg.selectAll(".node")
 				.data(nodes)
@@ -50,7 +49,5 @@ $(function(){
 					return d.name;
 				});
 		})
-	}
-
-	dataType();
+	})();
 });
