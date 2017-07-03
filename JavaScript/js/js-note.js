@@ -1,7 +1,7 @@
 $(function(){
     var dataType = function(){
         var width=600, height=300;
-        var cluster=d3.layout.cluster()     //����һ����Ⱥͼ����
+        var cluster=d3.layout.cluster()     //???????????????
             .size([width-300, height]);
 
         var svg=d3.select(".data-type-svg").append("svg")
@@ -10,8 +10,8 @@ $(function(){
             .append("g")
             .attr("transform", "translate(150,0)");
 
-        var diagonal=d3.svg.diagonal()      //����һ������������
-            .projection(function (d) {      //projection ��任��������x��y�����꣬��Ĭ�������ͼ�α�Ϊ����
+        var diagonal=d3.svg.diagonal()      //?????????????????
+            .projection(function (d) {      //projection ??任????????x??y??????????????????α??????
                 return [d.y, d.x];
             });
 
