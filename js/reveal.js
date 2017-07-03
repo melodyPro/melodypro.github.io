@@ -1536,7 +1536,7 @@
 			dom.overlay.classList.add( 'overlay-help' );
 			dom.wrapper.appendChild( dom.overlay );
 
-			var html = '<p class="title">Keyboard Shortcuts</p><br>';
+			var html = '<p class="title">Keyboard Shortcuts</p><br/>';
 
 			html += '<table><th>KEY</th><th>ACTION</th>';
 			for( var key in keyboardShortcuts ) {
@@ -3622,7 +3622,114 @@
 					}
 
 					// Visible fragments
-					if( i <= 0="" 1="" 10="" 1000="" index="" )="" {="" if(="" !element.classlist.contains(="" 'visible'="" fragmentsshown.push(="" element="" );="" element.classlist.add(="" element.classlist.remove(="" 'current-fragment'="" announce="" the="" fragments="" one="" by="" to="" screen="" reader="" dom.statusdiv.textcontent="element.textContent;" i="==" }="" hidden else="" element.classlist.contains(="" fragmentshidden.push(="" fragmentshidden.length="" dispatchevent(="" 'fragmenthidden',="" fragment:="" fragmentshidden[0],="" fragments:="" fragmentshidden="" fragmentsshown.length="" 'fragmentshown',="" fragmentsshown[0],="" fragmentsshown="" updatecontrols();="" updateprogress();="" return="" !!(="" ||="" false;="" **="" *="" navigate="" next="" slide="" fragment.="" @return="" {boolean}="" true="" if="" there="" was="" a="" fragment,="" false="" otherwise="" function="" nextfragment()="" navigatefragment(="" null,="" previous="" previousfragment()="" -1="" cues="" new="" automated="" enabled="" in="" config.="" cueautoslide()="" cancelautoslide();="" currentslide="" var="" currentfragment="currentSlide.querySelector(" '.current-fragment'="" fragmentautoslide="currentFragment" ?="" currentfragment.getattribute(="" 'data-autoslide'="" :="" null;="" parentautoslide="currentSlide.parentNode" currentslide.parentnode.getattribute(="" slideautoslide="currentSlide.getAttribute(" pick="" value="" following="" priority="" order:="" 1.="" current="" fragment's="" data-autoslide="" 2.="" slide's="" 3.="" parent="" 4.="" global="" autoslide="" setting="" fragmentautoslide,="" slideautoslide,="" parentautoslide,="" are="" media="" elements="" with="" data-autoplay,="" automatically="" set="" duration="" length="" of="" that="" media.="" not="" applicable="" is="" divided="" up="" into="" fragments.="" currentslide.queryselectorall(="" '.fragment'="" ).length="==" toarray(="" 'video,="" audio'="" ).foreach(="" function(="" el="" el.hasattribute(="" 'data-autoplay'="" &&="" el.duration=""> autoSlide ) {
+					if( i <= index ) {
+						if( !element.classList.contains( 'visible' ) ) fragmentsShown.push( element );
+						element.classList.add( 'visible' );
+						element.classList.remove( 'current-fragment' );
+
+						// Announce the fragments one by one to the Screen Reader
+						dom.statusDiv.textContent = element.textContent;
+
+						if( i === index ) {
+							element.classList.add( 'current-fragment' );
+						}
+					}
+					// Hidden fragments
+					else {
+						if( element.classList.contains( 'visible' ) ) fragmentsHidden.push( element );
+						element.classList.remove( 'visible' );
+						element.classList.remove( 'current-fragment' );
+					}
+
+
+				} );
+
+				if( fragmentsHidden.length ) {
+					dispatchEvent( 'fragmenthidden', { fragment: fragmentsHidden[0], fragments: fragmentsHidden } );
+				}
+
+				if( fragmentsShown.length ) {
+					dispatchEvent( 'fragmentshown', { fragment: fragmentsShown[0], fragments: fragmentsShown } );
+				}
+
+				updateControls();
+				updateProgress();
+
+				return !!( fragmentsShown.length || fragmentsHidden.length );
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Navigate to the next slide fragment.
+	 *
+	 * @return {Boolean} true if there was a next fragment,
+	 * false otherwise
+	 */
+	function nextFragment() {
+
+		return navigateFragment( null, 1 );
+
+	}
+
+	/**
+	 * Navigate to the previous slide fragment.
+	 *
+	 * @return {Boolean} true if there was a previous fragment,
+	 * false otherwise
+	 */
+	function previousFragment() {
+
+		return navigateFragment( null, -1 );
+
+	}
+
+	/**
+	 * Cues a new automated slide if enabled in the config.
+	 */
+	function cueAutoSlide() {
+
+		cancelAutoSlide();
+
+		if( currentSlide ) {
+
+			var currentFragment = currentSlide.querySelector( '.current-fragment' );
+
+			var fragmentAutoSlide = currentFragment ? currentFragment.getAttribute( 'data-autoslide' ) : null;
+			var parentAutoSlide = currentSlide.parentNode ? currentSlide.parentNode.getAttribute( 'data-autoslide' ) : null;
+			var slideAutoSlide = currentSlide.getAttribute( 'data-autoslide' );
+
+			// Pick value in the following priority order:
+			// 1. Current fragment's data-autoslide
+			// 2. Current slide's data-autoslide
+			// 3. Parent slide's data-autoslide
+			// 4. Global autoSlide setting
+			if( fragmentAutoSlide ) {
+				autoSlide = parseInt( fragmentAutoSlide, 10 );
+			}
+			else if( slideAutoSlide ) {
+				autoSlide = parseInt( slideAutoSlide, 10 );
+			}
+			else if( parentAutoSlide ) {
+				autoSlide = parseInt( parentAutoSlide, 10 );
+			}
+			else {
+				autoSlide = config.autoSlide;
+			}
+
+			// If there are media elements with data-autoplay,
+			// automatically set the autoSlide duration to the
+			// length of that media. Not applicable if the slide
+			// is divided up into fragments.
+			if( currentSlide.querySelectorAll( '.fragment' ).length === 0 ) {
+				toArray( currentSlide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
+					if( el.hasAttribute( 'data-autoplay' ) ) {
+						if( autoSlide && el.duration * 1000 > autoSlide ) {
 							autoSlide = ( el.duration * 1000 ) + 1000;
 						}
 					}
@@ -4635,4 +4742,3 @@
 	return Reveal;
 
 }));
-</=></aside></aside></section></int></int></int>
