@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
-    <title>JavaScript 学习笔记——在HTML中使用JavaScript | MelodyPro</title>
+    <title>JavaScript in HTML | MelodyPro</title>
 
     <meta name="keywords" content="JavaScript," />
 
@@ -89,12 +89,12 @@
     
 <article class="post">
     <h1 class='post-title'>
-        <span>JavaScript 学习笔记——在HTML中使用JavaScript</span>
+        <span>JavaScript in HTML</span>
     </h1>
     <div class="post-info">
         <span class="post-info-item">
             <span>Updated on:</span>
-            <span>2016.10.04</span>
+            <span>2017.07.30</span>
         </span>
         <span class="post-info-item">
             <span>Published on:</span>
@@ -115,37 +115,37 @@
         
         <span class="post-info-item">
           <i class="icon-comment"></i>
-          <a href="http://melodypro.github.io/2016/02/12/JavaScript-学习笔记——在HTML中使用JavaScript/#disqus_thread"></a>
+          <a href="http://melodypro.github.io/2016/02/12/JavaScript-in-HTML/#disqus_thread"></a>
         </span>
         
 
     </div>
     <section class='post-content'>
         <div class="post-content-md">
-            <p>在 HTML 中插入 JavaScript 的主要方法，就是使用 <code>&lt;script&gt;</code> 元素。 <code>type</code> 属性表示编写代码使用的脚本语言的内容类型（也称 MIME 类型），但该属性并不是必须的，如果没有指定这个属性，则其默认值仍为 <code>text/javascript</code>。</p>
-<h2 id="lt-script-gt-字符串"><a href="#lt-script-gt-字符串" class="headerlink" title="&lt;/script&gt; 字符串"></a><code>&lt;/script&gt;</code> 字符串</h2><p>在使用 <code>&lt;script&gt;</code> 元素嵌入 JavaScript 代码时，不要在代码中的任何地方出现 <code>&lt;/script&gt;</code> 字符串。例如，浏览器在加载下面的代码时就会产生一个错误：</p>
+            <p>The primary method of inserting JavaScript into an HTML page is via the <code>&lt;script&gt;</code> element.<br>The <code>type</code> attribute of the <code>&lt;script&gt;</code> element indicates the content type (also called MIME type) of the scripting language being used by the code block. The <code>type</code> attribute is safe to omit, as <code>text/javascript</code> is it’s default value.</p>
+<h2 id="The-String-lt-script-gt"><a href="#The-String-lt-script-gt" class="headerlink" title="The String &lt;/script&gt;"></a>The String <code>&lt;/script&gt;</code></h2><p>When using inline JavaScript code, keep in mind that you cannot have the string <code>&lt;script&gt;</code> anywhere in your code. For example, the following code causes an error when loaded into a browser:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayScript</span>(<span class="params"></span>)</span>&#123;</div><div class="line">         alert(<span class="string">"&lt;/script&gt;"</span>);</div><div class="line">     &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
 <p><img src="/images/js-error-1.png" alt=""></p>
-<p>因为按照解析嵌入式代码的规则，当浏览器遇到字符串 <code>&lt;/script&gt;</code> 时，就会认为那是结束的 <code>&lt;/script&gt;</code> 标签。而通过转义字符 <code>\</code> 解决这个问题：</p>
+<p>Because of the way that inline scripts are parsed, the browser sees the string <code>&lt;/script&gt;</code> as if it were the closing  tag. This problem can be avoided easily by escaping the <code>/</code> character, as in this example:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayScript</span>(<span class="params"></span>)</span>&#123;</div><div class="line">         alert(<span class="string">"&lt;\/script&gt;"</span>);</div><div class="line">     &#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="外部脚本文件和嵌入代码不能同时使用"><a href="#外部脚本文件和嵌入代码不能同时使用" class="headerlink" title="外部脚本文件和嵌入代码不能同时使用"></a>外部脚本文件和嵌入代码不能同时使用</h2><p>带有 <code>src</code> 属性的 <code>&lt;script&gt;</code> 元素不应该在其 <code>&lt;script&gt;</code> 和 <code>&lt;/script&gt;</code> 标签之间在包含额外的 JavaScript 代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码会被忽略。</p>
-<h2 id="脚本放在页面底部"><a href="#脚本放在页面底部" class="headerlink" title="脚本放在页面底部"></a>脚本放在页面底部</h2><p>在解析包含的 JavaScript 代码之前，页面的内容将完全呈现在浏览器中。而用户也会因为浏览器窗口显示空白页面的时间缩短而感到打开页面的速度加快了。如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">    &lt;html&gt;</div><div class="line">        &lt;head&gt;</div><div class="line">            &lt;title&gt;Example&lt;/title&gt;</div><div class="line">        &lt;/head&gt;</div><div class="line">        &lt;body&gt;</div><div class="line">        &lt;!--这里放内容--&gt;</div><div class="line">        &lt;script type="text/javascript" src="example.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h2 id="noscript-元素"><a href="#noscript-元素" class="headerlink" title="noscript 元素"></a><code>noscript</code> 元素</h2><p><code>&lt;noscript&gt;</code> 元素可以包含能够出现在文档 body 中的任何 HTML 元素————<code>&lt;script&gt;</code> 元素除外。包含在 <code>&lt;noscript&gt;</code> 元素中的内容只有在下列情况下才会显示出来：</p>
-<ol>
-<li>浏览器不支持脚本</li>
-<li>浏览器支持脚本，但脚本被禁用</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Example&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">    &lt;!--这里放内容--&gt;</div><div class="line">    &lt;script type="text/javascript" src="example.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;noscript&gt;</div><div class="line">        &lt;h3 class="page-header"&gt;本页面需要浏览器支持（启用）JavaScript 。&lt;br/&gt;</div><div class="line">            &lt;small&gt;Your browser does not support JavaScript!&lt;/small&gt;</div><div class="line">        &lt;/h3&gt;</div><div class="line">    &lt;/noscript&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="The-src-attribute-and-inline-code-can-not-be-used-at-the-same-time"><a href="#The-src-attribute-and-inline-code-can-not-be-used-at-the-same-time" class="headerlink" title="The src attribute and inline code can not be used at the same time"></a>The <code>src</code> attribute and inline code can not be used at the same time</h2><p>It’s important to note that a <code>&lt;script&gt;</code> element using the <code>src</code> attribute should not include additional JavaScript code between the <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code> tags. If both are provided, the script file is downloaded and executed while the inline code is ignored.</p>
+<h2 id="Include-JavaScript-at-the-end-of-lt-body-gt"><a href="#Include-JavaScript-at-the-end-of-lt-body-gt" class="headerlink" title="Include JavaScript at the end of &lt;body&gt;"></a>Include JavaScript at the end of <code>&lt;body&gt;</code></h2><p>Using this approach, the page is completely rendered in the browser before the JavaScript code is processed. The resulting user experience is perceived as faster, because the amount of time spent on a blank browser window is reduced.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">    &lt;html&gt;</div><div class="line">        &lt;head&gt;</div><div class="line">            &lt;title&gt;Example&lt;/title&gt;</div><div class="line">        &lt;/head&gt;</div><div class="line">        &lt;body&gt;</div><div class="line">        &lt;script type="text/javascript" src="example.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="The-lt-noscript-gt-element"><a href="#The-lt-noscript-gt-element" class="headerlink" title="The &lt;noscript&gt; element"></a>The <code>&lt;noscript&gt;</code> element</h2><p>The <code>&lt;noscript&gt;</code> element can contain any HTML elements, aside from <code>&lt;script&gt;</code>, that can be included in the document <code>&lt;body&gt;</code>. Any content contained in a <code>&lt;noscript&gt;</code> element will be displayed under only the following two situations:</p>
+<ul>
+<li>The browser doesn’t support scripting.</li>
+<li>The browser’s scripting support is turned off.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;Example&lt;/title&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">    &lt;script type="text/javascript" src="example.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;noscript&gt;</div><div class="line">        &lt;h3 class="page-header"&gt;This page requires a JavaScript-enabled browser.&lt;br/&gt;</div><div class="line">            &lt;small&gt;Your browser does not support JavaScript!&lt;/small&gt;</div><div class="line">        &lt;/h3&gt;</div><div class="line">    &lt;/noscript&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><p>Nicholas C. Zakas ，JavaScript高级程序设计（第3版）：人民邮电出版社 ，2012-3-29 ，第二章</p>
+<h2 id="References："><a href="#References：" class="headerlink" title="References："></a>References：</h2><p>Nicholas C. Zakas ，JavaScript高级程序设计（第3版）：人民邮电出版社 ，2012-3-29 ，第二章</p>
 
         </div>
         <div class="post-toc" id="toc">
     <span class="post-toc-switch on"></span>
     <div class="post-toc-box">
         <p class="toc-title">Content</p>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-script-gt-字符串"><span class="toc-text"></script> 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部脚本文件和嵌入代码不能同时使用"><span class="toc-text">外部脚本文件和嵌入代码不能同时使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本放在页面底部"><span class="toc-text">脚本放在页面底部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noscript-元素"><span class="toc-text">noscript 元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献："><span class="toc-text">参考文献：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-String-lt-script-gt"><span class="toc-text">The String </script></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-src-attribute-and-inline-code-can-not-be-used-at-the-same-time"><span class="toc-text">The src attribute and inline code can not be used at the same time</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-JavaScript-at-the-end-of-lt-body-gt"><span class="toc-text">Include JavaScript at the end of <body></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-lt-noscript-gt-element"><span class="toc-text">The <noscript> element</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References："><span class="toc-text">References：</span></a></li></ol>
     </div>
 </div>
     </section>
